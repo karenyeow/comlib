@@ -42,13 +42,13 @@ namespace iCare.Api.Controllers
         protected void SetHeaderValues()
         {
             _SetCommonHeaderValues();
-            Request.Headers.Add(APIHeaderConstants.ResponseTimeHeaderKey, DateTime.UtcNow.ToString("yyyyMMddTHHmmss") + "Z");
+            Response.Headers.Add(APIHeaderConstants.ResponseTimeHeaderKey, DateTime.UtcNow.ToString("yyyyMMddTHHmmss") + "Z");
 
         }
         protected void SetHeaderValuesUTC()
         {
             _SetCommonHeaderValues();
-            Request.Headers.Add(APIHeaderConstants.ResponseTimeHeaderKey, DateTime.UtcNow.ToString("yyyyMMddTHHmmss") + "Z");
+            Response.Headers.Add(APIHeaderConstants.ResponseTimeHeaderKey, DateTime.UtcNow.ToString("yyyyMMddTHHmmss") + "Z");
            
         }
 
@@ -58,10 +58,10 @@ namespace iCare.Api.Controllers
             var transactionIdKey = GetHeaderValues(APIHeaderConstants.TransactionIdHeaderKey);
             var lastModifiedTimeStampRaw = GetHeaderValues(APIHeaderConstants.RequestIfModifiedSinceHeaderKey);
 
-            Request.Headers.Clear();
-            Request.Headers.Add(APIHeaderConstants.RequestTimeHeaderKey, requestedTimeStampRaw);
-            Request.Headers.Add(APIHeaderConstants.RequestIfModifiedSinceHeaderKey, lastModifiedTimeStampRaw);
-            Request.Headers.Add(APIHeaderConstants.TransactionIdHeaderKey, transactionIdKey);
+            Response.Headers.Clear();
+            Response.Headers.Add(APIHeaderConstants.RequestTimeHeaderKey, requestedTimeStampRaw);
+            Response.Headers.Add(APIHeaderConstants.RequestIfModifiedSinceHeaderKey, lastModifiedTimeStampRaw);
+            Response.Headers.Add(APIHeaderConstants.TransactionIdHeaderKey, transactionIdKey);
 
 
         }
